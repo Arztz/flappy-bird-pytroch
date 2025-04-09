@@ -56,10 +56,7 @@ class Agent:
 
         if is_training:
             log_message = f"DQN\n"
-            if self.pretrained_model and os.path.exists(self.pretrained_model):
-                policy_dqn.load_state_dict(torch.load(self.pretrained_model))
-                target_dqn.load_state_dict(policy_dqn.state_dict())
-                print(f"Loaded pretrained model from {self.pretrained_model}")
+
             if self.enable_double_dqn == True:
                 log_message = f"Double DQN Enable"
             print(log_message)
@@ -84,6 +81,12 @@ class Agent:
         policy_dqn = DQN(num_states,num_actions,self.fc1_nodes,self.enable_dueling_dqn ).to(device)
 
         if is_training:
+            if self.pretrained_model and os.path.exists(self.pretrained_model):
+
+                print(f"Loading pretrained model from {self.pretrained_model}")
+                policy_dqn.load_state_dict(torch.load(self.pretrained_model))
+                target_dqn.load_state_dict(policy_dqn.state_dict())
+                print(f"Loaded pretrained model from {self.pretrained_model}")
             memory = ReplayMemory(self.replay_memory_size)
             epsilon = self.epsilon_init
             

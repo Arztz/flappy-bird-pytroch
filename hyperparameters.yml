@@ -28,7 +28,7 @@ flappybird-dqn:
   env_make_params:
     use_lidar: False
   enable_double_dqn: False
-  enable_dueling_dqn: False
+  enable_dueling_dqn: True
 
 flappybird-ddqn:
   env_id: FlappyBird-v0
@@ -44,6 +44,6 @@ flappybird-ddqn:
   fc1_nodes: 512
   env_make_params:
     use_lidar: False
-  pretrained_model: flappybird-dqn
+  pretrained_model: ./runs/flappybird-dqn.pt
   enable_double_dqn: True
   enable_dueling_dqn: True
