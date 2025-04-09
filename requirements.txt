@@ -1,7 +1,7 @@
 flappy-bird-gymnasium
 tensorflow
 PyYAML
---index-url https://download.pytorch.org/whl/cu126
+# --index-url https://download.pytorch.org/whl/cu126
 torch
 torchvision
 torchaudio
